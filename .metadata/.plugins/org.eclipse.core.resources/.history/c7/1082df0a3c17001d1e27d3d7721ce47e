@@ -1,0 +1,51 @@
+package controllers;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.FilmeDto;
+import entities.Diretor;
+import services.FilmeService;
+
+public class FilmeController {
+	
+	private FilmeService fs;
+	
+	public FilmeController() {
+		this.fs = new FilmeService();
+	}
+	
+	public boolean addFilme(FilmeDto filmeDto) {
+		
+		if(!filmeDto.validate())
+			return false;
+		
+		return fs.addFilme(filmeDto);		
+	}
+	
+	public List<FilmeDto> listaFilmesPorNome(){
+		return fs.listaFilmesPorNome();
+	}
+	
+	public List<FilmeDto> listaFilmesPorDiretor(String diretor){
+		return fs.listaFilmesPorDiretor(diretor);
+	}
+	
+	public List<FilmeDto> listaFilmesPorAtor(String ator){
+		return fs.listaFilmesPorAtor(ator);
+	}
+	
+	public List<FilmeDto> listaFilmesPorNota(float nota){
+		return fs.listaFilmesPorNota(nota);
+	}
+	
+	public String[] listaAtores(){
+		return fs.listaAtores();
+	}
+	
+	public String[] listaDiretores() {
+		return fs.listaDiretores();
+	}
+	
+	
+}

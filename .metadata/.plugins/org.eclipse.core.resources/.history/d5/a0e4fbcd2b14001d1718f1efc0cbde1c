@@ -1,0 +1,19 @@
+package repositories;
+
+import java.util.HashSet;
+
+import entities.Ator;
+
+public class AtorRepository {
+	
+	private HashSet<Ator> atores;
+	
+	public AtorRepository() {
+		this.atores = new HashSet<Ator>();
+	}
+	
+	public boolean addAtor(Ator ator) {
+		return this.atores.add(ator);
+	}
+
+}

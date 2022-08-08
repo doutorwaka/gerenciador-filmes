@@ -1,0 +1,24 @@
+package repositories;
+
+import java.util.HashSet;
+
+import entities.Diretor;
+
+public class DiretorRepository {
+
+private HashSet<Diretor> diretores;
+	
+	public DiretorRepository() {
+		this.diretores = new HashSet<Diretor>();
+	}
+	
+	public boolean addDiretor(Diretor diretor) {
+		return this.diretores.add(diretor);
+	}
+	
+	public boolean removeDiretor(Diretor diretor) {
+		return this.diretores.remove(diretor);
+	}
+	
+	
+}

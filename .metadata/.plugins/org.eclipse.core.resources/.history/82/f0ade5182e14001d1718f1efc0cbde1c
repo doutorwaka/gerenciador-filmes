@@ -1,0 +1,28 @@
+package services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import entities.Ator;
+import repositories.AtorRepository;
+
+public class AtorService {
+
+	private AtorRepository ar;
+	
+	public AtorService() {
+		this.ar = new AtorRepository();
+	}
+	
+	public boolean addAtor(String nome) {
+		return this.ar.addAtor(new Ator(nome));
+	}
+	
+	public boolean removeAtor(String nome) {
+		return this.ar.removeAtor(new Ator(nome));
+	}
+	
+	public Ator[] listaAtores(){
+		return this.ar.getAtores().toArray();
+	}
+}

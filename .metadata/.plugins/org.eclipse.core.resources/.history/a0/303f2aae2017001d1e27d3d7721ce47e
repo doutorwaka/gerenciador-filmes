@@ -1,0 +1,34 @@
+package controllers;
+
+import java.util.List;
+
+import dto.FilmeDto;
+import entities.Filme;
+import services.FilmeService;
+
+public class FilmeController {
+	
+	private FilmeService fs;
+	
+	public FilmeController() {
+		this.fs = new FilmeService();
+	}
+	
+	public boolean addFilme(FilmeDto filmeDto) {
+		
+		if(!filmeDto.validate())
+			return false;
+		
+		return fs.addFilme(filmeDto);		
+	}
+	
+	public List<Filme> listaFilmesPorNome(){
+		return fs.listaFilmesPorNome();
+	}
+	
+	public List<Filme> listaFilmesPorDiretor(String diretor){
+		return fs.listaFilmesPorAtor(diretor);
+	}
+	
+	
+}

@@ -1,0 +1,16 @@
+package repositories;
+
+import java.util.HashSet;
+
+import entities.Filme;
+
+public class FilmeRepository {
+
+	private HashSet<Filme> filmes;
+	
+	public FilmeRepository() {
+		this.filmes = new HashSet<Filme>();
+	}
+	
+		
+}

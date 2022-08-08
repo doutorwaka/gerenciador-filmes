@@ -1,0 +1,13 @@
+package services;
+
+public class FilmeService {
+	
+	private FilmeRepository fr;
+	
+	public FilmeService() {
+		this.fr = new FilmeRepository();
+	}
+	
+	
+
+}

@@ -1,0 +1,163 @@
+package ui;
+
+import java.util.ArrayList;
+
+import controllers.FilmeController;
+import dto.FilmeDto;
+import utils.Leitura;
+
+public class UI {
+	
+	private enum MENU {
+		CADASTRAR_FILME(1),
+		LISTAR_FILMES(2),
+		PROCURAR_POR_NOME(3),
+		PROCURAR_POR_DIRETOR(4),
+		PROCURAR_POR_ATOR(5),
+		PROCURAR_POR_NOTA(6),
+		SAIR(7);		
+
+		private final int valor;
+		
+		MENU(int valor) {
+			this.valor = valor; 
+		}
+		
+		public MENU doInt(int valor) {
+			if(valor == CADASTRAR_FILME.valor)
+				return CADASTRAR_FILME;
+			else if(valor == LISTAR_FILMES.valor)
+				return LISTAR_FILMES;
+			else if(valor == PROCURAR_POR_NOME.valor)
+				return PROCURAR_POR_NOME;
+			else if(valor == PROCURAR_POR_DIRETOR.valor)
+				return PROCURAR_POR_DIRETOR;
+			else if(valor == PROCURAR_POR_ATOR.valor)
+				return PROCURAR_POR_ATOR;
+			else if(valor == PROCURAR_POR_NOTA.valor)
+				return PROCURAR_POR_NOTA;
+			else
+				return SAIR;			
+		}
+		
+		public int getValor() {
+			return this.valor;
+		}
+	};
+	
+	private FilmeController fc;
+	
+	public UI() {
+		this.fc = new FilmeController();
+	}
+	
+	public void run() {
+		divisoria();
+		bemVindo();
+		
+		MENU escolhaMenu;
+		
+		do{
+			escolhaMenu = MENU.
+			
+			switch(escolhaMenu) {
+				case CADASTRAR_FILME:{
+					cadastrarFilme();
+				}
+				case LISTAR_FILMES:{
+					listarFilmes();
+				}
+			}
+			
+		} while(escolhaMenu != MENU.SAIR);
+		
+	}
+	
+	public void divisoria() {
+		System.out.println("=========================");
+	}
+	
+	public void titulo(String titulo) {
+		divisoria();
+		System.out.println(titulo);
+		divisoria();
+	}
+	
+	public void bemVindo() {
+		System.out.println("Bem vindo ao aplicativo de cadastro de filmes.");
+	}
+	
+	public int menu() {
+		divisoria();
+		System.out.println("Escolha uma opcao do menu para continuar: ");
+		divisoria();
+		
+		System.out.print(MENU.CADASTRAR_FILME.getValor()); 
+		System.out.println(" - Cadastrar um filme.");
+		System.out.print(MENU.LISTAR_FILMES.getValor()); 
+		System.out.println(" - Listar filmes cadastrados.");
+		System.out.print(MENU.PROCURAR_POR_NOME.getValor()); 
+		System.out.println(" - Procurar um filme por nome.");
+		System.out.print(MENU.PROCURAR_POR_DIRETOR.getValor()); 
+		System.out.println(" - Listar filmes de um diretor.");
+		System.out.print(MENU.PROCURAR_POR_ATOR.getValor()); 
+		System.out.println(" - Listar filmes de um ator.");
+		System.out.print(MENU.PROCURAR_POR_NOTA.getValor());
+		System.out.println(" - Listar filmes por nota.");
+		System.out.print(MENU.SAIR.getValor());
+		System.out.print(" - Encerrar.");
+		
+		System.out.println();
+		
+		int opcao = Leitura.LeInt("Qual a opcao desejada? ");
+		
+		if(opcao == MENU.CADASTRAR_FILME.getValor())
+			return 
+		
+		return ;
+	}
+	
+	public boolean cadastrarFilme() {
+		
+		titulo("Cadastro de filme");
+		
+		String nome = Leitura.leStr("  Informe o nome do filme: ");
+		String diretor = Leitura.leStr("  Informe o nome do diretor do filme: ");
+		
+		ArrayList<String> elenco = new ArrayList<String>();
+		
+		boolean maisAtores = true;
+		
+		do {
+			String ator = Leitura.leStr("  Informe um(a) ator/atriz do filme ou -1 para parar de informar: ");
+			
+			if(!ator.equals("-1"))
+				elenco.add(ator);
+			else {
+				if(elenco.size() > 0)
+					maisAtores = false;
+				else
+					System.out.println("  ** Pelo menos um(a) ator/atriz deve ser infromado(a).");
+			}
+			
+		} while (maisAtores);
+		
+		float nota = Leitura.LeFloat("  Informa a sua nota para o filme: ");
+		
+		return fc.addFilme(new FilmeDto(nome, diretor, (String[]) elenco.toArray(), nota));
+	}
+	
+	public void listarFilmes() {
+		
+		titulo("Listar Filmes");
+		
+		ArrayList<FilmeDto> filmesDto = new ArrayList<FilmeDto>(fc.listaFilmesPorNome());
+		
+		System.out.println(filmesDto);
+		
+		/*for(FilmeDto f : filmesDto) {
+			System.out.println("  " + f.toString());
+		}*/
+	}
+	
+}

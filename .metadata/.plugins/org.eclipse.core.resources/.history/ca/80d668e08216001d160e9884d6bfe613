@@ -1,0 +1,26 @@
+package services;
+
+import java.util.HashSet;
+
+import entities.Ator;
+import entities.Diretor;
+import entities.Filme;
+import repositories.FilmeRepository;
+
+public class FilmeService {
+	
+	private FilmeRepository fr;
+	
+	public FilmeService() {
+		this.fr = new FilmeRepository();
+	}
+	
+	public boolean addFilme(String nome, Diretor diretor, 
+			HashSet<Ator> elenco, float nota) {
+		Filme filme = new Filme(nome, diretor, elenco, nota);
+		return fr.addFilme(filme);
+	}
+	
+	
+
+}

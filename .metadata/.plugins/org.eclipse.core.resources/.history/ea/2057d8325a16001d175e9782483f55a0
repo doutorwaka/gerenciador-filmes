@@ -1,0 +1,7 @@
+
+public interface Teste {
+
+	
+	public double testando();
+	
+}

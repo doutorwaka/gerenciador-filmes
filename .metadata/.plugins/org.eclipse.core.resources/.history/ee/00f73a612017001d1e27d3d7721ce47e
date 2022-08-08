@@ -1,0 +1,17 @@
+package controllers;
+
+import services.FilmeService;
+
+public class FilmeController {
+	
+	private FilmeService fs;
+	
+	public FilmeController() {
+		this.fs = new FilmeService();
+	}
+	
+	public boolean addFilme(FilmeDto filmeDto) {
+		
+	}
+
+}
