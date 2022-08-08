@@ -25,7 +25,7 @@ private HashSet<Diretor> diretores;
 		return new HashSet<Diretor>(diretores);
 	}
 	
-	public Diretor getAtor(String nome) {		
+	public Diretor getDiretor(String nome) {		
 		Diretor diretor = null;
 		
 		Iterator<Diretor> iterator = diretores.iterator();
