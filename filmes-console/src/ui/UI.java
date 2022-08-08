@@ -81,6 +81,10 @@ public class UI {
 				case PROCURAR_POR_ATOR:
 					procurarFilmePorAtor();
 					break;
+
+				case PROCURAR_POR_NOTA:
+					procurarFilmePorNota();
+					break;
 					
 				case LISTAR_DIRETORES:
 					listarDiretores();
@@ -88,6 +92,10 @@ public class UI {
 					
 				case LISTAR_ATORES:
 					listarAtores();
+					break;
+
+				case SAIR:
+					sair();
 					break;
 			}
 
@@ -107,6 +115,10 @@ public class UI {
 
 	public void bemVindo() {
 		System.out.println("Bem vindo ao aplicativo de cadastro de filmes.");
+	}
+
+	public void sair(){
+		System.out.println("Ate mais!");
 	}
 
 	public int menu() {
@@ -198,6 +210,16 @@ public class UI {
 		String ator = Leitura.leStr("Qual o nome do(a) Ator/Atriz que deseja procurar? ");
 
 		List<FilmeDto> filmesDto = fc.listaFilmesPorAtor(ator);
+
+		System.out.println(filmesDto);
+	}
+
+	public void procurarFilmePorNota() {
+		titulo("PROCURAR FILME POR NOTA");
+
+		float nota = Leitura.LeFloat("Qual o valor da nota que o filme deve ser maior ou igual? ");
+
+		List<FilmeDto> filmesDto = fc.listaFilmesPorNota(nota);
 
 		System.out.println(filmesDto);
 	}
