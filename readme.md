@@ -1,0 +1,1 @@
+Projeto de gerenciamneto de cadastro de filmes destinado a praticar e entender o funcionamento do padrão MVC e do DDD. Inclui um projeto console.
